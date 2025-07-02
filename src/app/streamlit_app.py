@@ -4,6 +4,7 @@ import requests
 from streamlit_drawable_canvas import st_canvas
 from PIL import Image
 import scipy.ndimage
+import os
 
 st.set_page_config(page_title="Reconnaissance MNIST", layout="wide")
 
@@ -50,7 +51,9 @@ with col2:
         img_list_draw = img_np_draw.flatten().tolist()
         if st.button("Prédire", use_container_width=True):
             with st.spinner("Le modèle réfléchit..."):
-                url = "http://127.0.0.1:8000/api/v1/predict"
+                # url = "http://127.0.0.1:8000/api/v1/predict"
+                API_URL = os.environ.get("API_URL", "http://127.0.0.1:8000")
+                url = f"{API_URL}/api/v1/predict"
                 data = {"image": img_list_draw}
                 try:
                     response = requests.post(url, json=data, timeout=5)
