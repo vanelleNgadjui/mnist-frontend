@@ -31,4 +31,4 @@ Le frontend est indépendant du backend (API FastAPI). Configurez l'URL de l'API
 - `requirements.txt` : dépendances Python
 
 ## Auteur
-Votre nom 
+Vanelle beunkeu
